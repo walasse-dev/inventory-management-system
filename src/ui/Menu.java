@@ -58,9 +58,9 @@ public class Menu {
                 3 - Search product
                 4 - Update product
                 5 - Remove product
-                6 - Add stock
-                7 - Remove stock
-                8 - List low stock products
+                6 - Add quantity
+                7 - Remove quantity
+                8 - List low quantity products
                 0 - Back
                 
                 Select an option:\s""");
@@ -79,7 +79,7 @@ public class Menu {
         String product = sc.nextLine();
         System.out.print("Product price: ");
         BigDecimal price = new BigDecimal(sc.nextLine());
-        System.out.print("Initial stock: ");
+        System.out.print("Initial quantity: ");
         int quantity = Integer.parseInt(sc.nextLine());
     }
 

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Product {
-    private Long id;
+    private final Long id;
     private String name;
     private BigDecimal price;
     private int quantity;
@@ -20,14 +20,9 @@ public class Product {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -35,17 +30,25 @@ public class Product {
     public BigDecimal getPrice() {
         return price;
     }
-
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void addStock(int quantity) {
+        this.quantity += quantity;
+    }
+    public void removeStock(int quantity) {
+        this.quantity -= quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public boolean hasStock() {
+        return quantity > 0;
+    }
+    public boolean isLowStock() {
+        return quantity <= 5;
+    }
+    public boolean isOutOfStock() {
+        return quantity == 0;
     }
 
     @Override
@@ -54,9 +57,18 @@ public class Product {
         Product product = (Product) o;
         return Objects.equals(id, product.id);
     }
-
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }
